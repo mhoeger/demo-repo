@@ -1,5 +1,6 @@
-module_name:
+project_name:
   type: str
+  help: Project name
 
 name:
   type: str
