@@ -1,0 +1,3 @@
+[bandit]
+exclude: ./tests,venv,env,./test/config
+skips: B311

@@ -1,0 +1,12 @@
+[run]
+omit =
+    ./test/config/*, tests/*, **/__init__.py, **/run.py
+data_file = /tmp/python_starter_coverage
+branch = True
+
+[report]
+show_missing = True
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover

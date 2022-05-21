@@ -1,0 +1,9 @@
+# see link below for information on the different pylintrc config options
+# http://pylint.pycqa.org/en/latest/faq.html?highlight=pylintrc#how-do-i-find-the-option-name-for-pylintrc-corresponding-to-a-specific-command-line-option
+
+[MASTER]
+# this hook is used to support our path structure. Without this pylint gives
+# warnings when importing modules from the /tests folder
+init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+disable=
+    C0111, invalid-name, no-name-in-module, no-self-argument, too-few-public-methods, no-member, unused-wildcard-import, redefined-outer-name

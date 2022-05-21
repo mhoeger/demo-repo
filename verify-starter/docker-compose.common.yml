@@ -1,0 +1,47 @@
+version: "3.4"
+
+x-build-args:
+  &service_common_args
+  PROJECT_MAINTAINER: marie
+  project_slug: test
+  PROJECT_VERSION: 0.0.0
+
+services:
+  devbox:
+    build:
+      context: .
+      dockerfile: ./docker/devbox.dockerfile
+      network: host
+    image: devbox
+    environment:
+      TEST_CONFIG: local
+    tty: true
+    volumes:
+      - ./:/src
+    network_mode: host
+
+  lint:
+    image: devbox
+    entrypoint: [ "/bin/sh", "-c" ]
+    command: ./docker/run_tests.sh --local --lint --project-dir test
+    environment:
+      TEST_CONFIG: testing
+    volumes:
+      - ./:/src
+    network_mode: host
+    depends_on:
+      - devbox
+
+  test:
+    image: devbox
+    entrypoint: [ "/bin/sh", "-c" ]
+    command:
+      - |
+        ./docker/run_tests.sh --project-dir test --local --unit-test --run pytest tests/unit/* --cov-fail-under=1 --cov-report=html:.pytest_reports/html_dir --cov-report=xml:.pytest_reports/coverage.xml
+    environment:
+      TEST_CONFIG: testing
+    volumes:
+      - ./:/src
+    network_mode: host
+    depends_on:
+      - devbox

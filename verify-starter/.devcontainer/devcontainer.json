@@ -1,0 +1,7 @@
+{
+  "workspaceFolder": "/workspace",
+  "extensions": ["ms-python.vscode-pylance"],
+  "dockerComposeFile": ["../docker-compose.common.yml", "docker-compose.yml"],
+  "service": "devbox",
+  "remoteUser": "pachama"
+}

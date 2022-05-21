@@ -1,0 +1,8 @@
+--trusted-host infra-pypicloud.prod.pachama.com \
+--index-url https://infra-pypicloud.prod.pachama.com/simple/
+
+click==7.1.2
+ddtrace
+loguru
+pydantic
+typing

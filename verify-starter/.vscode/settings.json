@@ -1,0 +1,5 @@
+{
+  "python.linting.pylintEnabled": true,
+  "python.languageServer": "Pylance",
+  "python.formatting.provider": "autopep8"
+}
