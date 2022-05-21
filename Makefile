@@ -5,7 +5,7 @@ export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 
-.PHONY: run ## Run app devbox :)
+.PHONY: run ## Run app devbox
 run:
 	$(DEV_COMPOSE) -f docker-compose.common.yml run  --rm devbox
 
@@ -16,7 +16,7 @@ down:
 .PHONY: test ## Run app test suite
 test:
 ifeq ($(IS_DEV_CONTAINER_ENV), true)
-	./docker/run_tests.sh --project-dir test --local --unit-test --run pytest tests/unit/* --cov-fail-under=1 --cov-report=html:.pytest_reports/html_dir --cov-report=xml:.pytest_reports/coverage.xml
+	./docker/run_tests.sh --project-dir my_project --local --unit-test --run pytest tests/unit/* --cov-fail-under=1 --cov-report=html:.pytest_reports/html_dir --cov-report=xml:.pytest_reports/coverage.xml
 else
 	$(DEV_COMPOSE) -f docker-compose.common.yml run test
 endif
@@ -24,7 +24,7 @@ endif
 .PHONY: lint ## Run app linting tools
 lint:
 ifeq ($(IS_DEV_CONTAINER_ENV), true)
-	./docker/run_tests.sh --local --lint --project-dir test
+	./docker/run_tests.sh --local --lint --project-dir my_project
 else
 	$(DEV_COMPOSE) -f docker-compose.common.yml run lint
 endif

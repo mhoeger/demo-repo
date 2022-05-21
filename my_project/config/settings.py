@@ -3,6 +3,6 @@ import os
 
 from dataclasses import dataclass, field
 
-from test.config.constants import ENV_NAME
+from my_project.config.constants import ENV_NAME
 
 ENV = os.environ[ENV_NAME]

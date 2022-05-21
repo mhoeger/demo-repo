@@ -2,5 +2,5 @@ _commit: 015c95e
 _src_path: gh:pachama/verify-starter
 author: marie
 description: hello
-is_monorepo_project: true
-project_dirname: test
+is_monorepo_project: false
+project_dirname: my_project

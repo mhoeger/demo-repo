@@ -1,6 +1,6 @@
 [run]
 omit =
-    ./test/config/*, tests/*, **/__init__.py, **/run.py
+    ./my_project/config/*, tests/*, **/__init__.py, **/run.py
 data_file = /tmp/python_starter_coverage
 branch = True
 

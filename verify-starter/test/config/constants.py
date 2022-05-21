@@ -1,1 +1,0 @@
-ENV_NAME = "TEST_CONFIG"

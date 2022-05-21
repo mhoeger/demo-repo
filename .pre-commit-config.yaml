@@ -1,0 +1,72 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: local
+  hooks:
+  - id: make lint
+    name: Run the linter
+    language: system
+    entry: make lint
+
+  - id: forbidden-files
+    name: forbidden files
+    entry: found copier update rejection files; review them and remove them
+    language: fail
+    files: "\\.rej$"
+
+- repo: https://github.com/pre-commit/mirrors-autopep8
+  rev: v1.5.4
+  hooks:
+  - id: autopep8
+    args: ['-r', '--in-place', 'src']
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+  - id: check-yaml
+    exclude: template\..*\.yaml
+    args:
+    - --allow-multiple-documents
+  - id: end-of-file-fixer
+    exclude: (?:\.pre-commit-config.yaml|((?:docs\/.+)(?:.html|.css|.js))$)
+  - id: trailing-whitespace
+    exclude: (?:setup.cfg|((?:docs\/.+)(?:.html|.css|.js))$)
+  - id: check-merge-conflict
+    exclude: ((?:docs\/.+)(?:.html|.css|.js))$
+
+- repo: https://github.com/myint/autoflake
+  rev: v1.4
+  hooks:
+    - id: autoflake
+      args:
+        - --ignore-init-module-imports
+        - --remove-all-unused-imports
+        - --remove-unused-variables
+        - --in-place
+
+- repo: https://github.com/timothycrosley/isort
+  rev: 5.7.0
+  hooks:
+  - id: isort
+    args: ["--profile", "black", "--filter-files"]
+
+- repo: https://github.com/psf/black
+  rev: 19.3b0
+  hooks:
+  - id: black
+    exclude: ((?:docs\/.+)(?:.html|.css|.js))$
+
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  rev: v1.1.7
+  hooks:
+  - id: remove-crlf
+    exclude: (?:\.eps$|^pcb/|((?:docs\/.+)(?:.html|.css|.js))$)
+
+- repo: https://github.com/jlebar/pre-commit-hooks
+  # Latest revision as of writing.
+  rev: 349213c5414e360385e74f04964e6d5c43cdad36
+  hooks:
+  # Forbids the string "DO NOT SUBMIT" anywhere in code
+  # except the current file.
+  - id: do-not-submit
+    exclude: (?:\.pre-commit-config.yaml|((?:docs\/.+)(?:.html|.css|.js))$)
