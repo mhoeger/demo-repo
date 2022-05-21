@@ -5,7 +5,7 @@ export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 
-.PHONY: run ## Run app devbox
+.PHONY: run ## Run app devbox :)
 run:
 	$(DEV_COMPOSE) -f docker-compose.common.yml run  --rm devbox
 
