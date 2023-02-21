@@ -1,6 +1,6 @@
 # My Project
 
-hello testing
+hello 
 
 # USING THE TEMPLATE **important**
 
